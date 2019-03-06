@@ -1,0 +1,53 @@
+.bookimage{
+    height:400px;
+    margin-top:5px;
+}
+.titlecard{
+    height:80px;
+    margin-top:0px;
+}
+.maincard{
+    height:200px;
+    margin-top:0px;
+
+
+}
+.footercard{
+    height:100px;
+    margin-top:-20px;
+}
+.title{
+    margin-top:-20px;
+    font-size:25px;
+    font-family:"SimHei";
+    font-weight: bold;
+    height:50px;
+    line-height:50px;
+}
+.abstract{
+    margin-top:-20px;
+    font-size:15px;
+    font-family:"FangSong";
+    font-weight: light;
+    color:rgb(163, 163, 163);
+    height:50px;
+    line-height:50px;
+}
+.author{
+    height:80px;
+    line-height:30px;
+}
+.price{
+    height: 60px;
+    line-height: 60px;
+    color:red;
+    font-size:30px;
+    margin-top:5px;
+}
+.dollar{
+    height: 60px;
+    line-height: 60px;
+    font-size:20px;
+    margin-top:7px;
+    color:red
+}

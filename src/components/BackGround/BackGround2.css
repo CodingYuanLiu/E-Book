@@ -1,0 +1,20 @@
+.header{
+    background-color: pink;
+    color: #333;
+    text-align: center;
+    line-height: 60px;
+}
+  
+.el-main {
+    color: #333;
+    text-align: center;
+    line-height: 160px;
+    height: 800px;
+    background-color: rgb(218, 214, 214);
+}
+  
+.tit {
+    height:50px;
+    margin-left:400px;
+    line-height:50px;
+}

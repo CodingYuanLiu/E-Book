@@ -1,0 +1,19 @@
+.header{
+    background-color: #409EFF;
+    color: #333;
+    text-align: center;
+    line-height: 60px;
+}
+  
+.el-main {
+    color: #333;
+    text-align: center;
+    line-height: 160px;
+    height: 800px;
+}
+  
+.tit {
+    height:50px;
+    margin-top:5px;
+    margin-left:10px;
+}

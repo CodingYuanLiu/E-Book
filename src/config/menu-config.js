@@ -1,0 +1,28 @@
+module.exports = [{
+    name:'教科书类',
+    id:'textbook',
+    sub:[{
+        name:'工科类',
+        componentName:'engineering'
+    },
+    {
+        name:'理科类',
+        componentName:'science'
+    },
+    {
+        name:'文科类',
+        componentName:'arts'
+    }
+    ]
+    },
+    {
+        name:'小说类',
+        id:'novel',
+        sub:[]
+    },
+    {
+        name:'儿童类',
+        id:'children',
+        sub:[]
+    }
+]

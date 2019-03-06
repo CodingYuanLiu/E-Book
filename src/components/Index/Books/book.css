@@ -1,0 +1,30 @@
+.bookinfo{
+    width:auto;
+    margin-left:-20px;
+}
+.bookimage{
+    height:auto;
+    margin-top:10px;
+}
+.title{
+    height:30px;
+    margin-top:-70px;
+    font-size: 20px;
+    font-family: "FangSong",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+}
+.book{
+    width:450px;
+    height:220px;
+}
+.author{
+    margin-top:0px;
+    height:90px;
+    font-family:"FangSong";
+    color:gray;
+}
+.price{
+    margin-top:0px;
+    width:200px;
+    height:30px;
+    font-family:"FangSong";
+}

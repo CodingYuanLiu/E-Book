@@ -1,0 +1,17 @@
+.line_split {
+    height: 1px;
+    border-top: 1px solid #ddd;
+    text-align: center;
+    margin-top:15px;
+}
+.el-row-books{
+    margin-top:20px;
+}
+.stroke{
+    color: transparent;
+    -webkit-text-stroke: 1px black;
+    letter-spacing: 0.04em;
+    font-family:'KaiTi';
+    margin-top:-60px;
+    font-size:5ex;
+}
