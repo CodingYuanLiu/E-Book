@@ -15,6 +15,7 @@
 .book{
     width:450px;
     height:220px;
+    margin-top:15px;
 }
 .author{
     margin-top:0px;
@@ -22,9 +23,20 @@
     font-family:"FangSong";
     color:gray;
 }
-.price{
+.remain{
     margin-top:0px;
     width:200px;
     height:30px;
     font-family:"FangSong";
+}
+.price{
+    margin-top:10px;
+    width:200px;
+    height:30px;
+    font-size:25px;
+    color:red;
+}
+
+.router-link {
+  text-decoration: none;
 }
