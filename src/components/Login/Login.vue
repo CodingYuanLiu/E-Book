@@ -1,0 +1,45 @@
+<template>
+<div align=center>
+    <el-card class=border shadow="never">
+    <el-container>
+    <el-header>
+        <div class=title>
+            登陆
+        </div>
+    </el-header>
+    <el-main>
+    <el-row>
+        <div>
+        <el-col :span="6" align=right  class=inputline> 
+            用户名： 
+        </el-col>
+
+        <el-col :span="14" class=inputline>
+            <el-input v-model="username" placeholder="请输入内容" 
+            prefix-icon="el-icon-service"></el-input>
+        </el-col>
+        </div>
+    </el-row>
+    <el-row>
+        <div>
+        <el-col :span="6" align=right  class=inputline>
+            密码： 
+        </el-col>
+        <el-col :span="14" class=inputline>
+                <el-input placeholder="请输入密码" v-model="password" show-password 
+                prefix-icon="el-icon-edit"></el-input>
+        </el-col>
+        </div>
+    </el-row>
+    <el-row>
+      <el-button type="primary" style="width:200px;" @click="output()">登陆</el-button>
+    </el-row>
+    </el-main>
+    </el-container>
+    </el-card>
+</div>
+</template>
+<script src="./Login.js"></script>
+<style scoped>
+    @import './Login.css';
+</style>

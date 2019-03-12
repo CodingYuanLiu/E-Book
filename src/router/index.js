@@ -6,6 +6,8 @@ import detbook1 from '@/components/Details/DetBook1.vue'
 import detbook2 from '@/components/Details/DetBook2.vue'
 import engineering from '@/components/Index/Categories/Engineering.vue'
 import novel from '@/components/Index/Categories/Novel.vue'
+import login from '@/components/Login/Login.vue'
+import signup from '@/components/Sign-up/Sign-up.vue'
 
 Vue.use(Router)
 export default new Router({
@@ -34,6 +36,16 @@ export default new Router({
       path: '/novel',
       name: 'novel',
       component: novel
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: login
+    },
+    {
+      path: '/sign-up',
+      name: 'sign-up',
+      component: signup
     }
   ]
 })

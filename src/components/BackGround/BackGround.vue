@@ -9,14 +9,12 @@
               </router-link>
               </div>
           </el-col>
-          <el-col :span="1">
-            <i class="el-icon-search"></i>
-          </el-col>
-          <el-col :span="6">
+          <el-col :span="7">
               <el-input
               placeholder="查找你喜欢的图书"
               v-model="inputsearch"
-              clearable>
+              clearable
+              prefix-icon="el-icon-search">
               </el-input>
           </el-col>
           <el-col :span="1">

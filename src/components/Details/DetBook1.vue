@@ -9,13 +9,13 @@
         <el-main>
             <el-container>
                 <el-header>
-                    <el-card shadow="hover" class=titlecard align=left>
+                    <el-card shadow="never" class=titlecard align=left>
                         <div class=title>深入理解计算机系统</div>
                         <div class=abstract>上海交大软件学院ICS教材</div>    
                     </el-card>
                 </el-header>
                 <el-main>
-                    <el-card shadow="hover" align=left class=maincard>
+                    <el-card shadow="never" align=left class=maincard>
                         <el-row>
                             <el-col :span="8">
                                 <div align=left class=author>
@@ -24,7 +24,7 @@
                             </el-col>
                             <el-col :span="16">
                                 <div align=left class=author>
-                                    出版社:机械工业出版社
+                                    出版社: 机械工业出版社
                                 </div>
                             </el-col>
                         </el-row>
@@ -42,7 +42,7 @@
                                 </div>
                             </el-col>
                             <el-col :span="19">
-                                <div class=author style= "line-height:70px;">
+                                <div class=author style= "line-height:70px;color:black;">
                                     （库存：10）
                                 </div>
                             </el-col>
@@ -51,7 +51,7 @@
                     </el-card>    
                 </el-main>
                 <el-footer height="150px ">
-                    <el-card shadow="hover" class=footercard>
+                    <el-card shadow="never" class=footercard>
                         <div style="margin-top:-50px;" align=left>
                             <el-row>
                                 <el-col :span="6">
