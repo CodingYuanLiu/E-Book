@@ -10,11 +10,11 @@
             </router-link>
         </el-aside>
         <el-main style="overflow:hidden;">
-            <div class=bookinfo >
-                <div :class="{'title': display,'title1':!display}" align=left @click="changecolor()">深入理解计算机基础</div>
-                <div class=author align=left>作者：Bryant,Hallaron</div>
-                <div class=remain align=left>库存:10 ISBN编号:000</div>
-                <div class=price align=left>128￥</div>
+            <div class=bookinfo>
+                <div :class="{'title': display,'title1':!display}" align=left @click="changecolor()">{{info.name}}</div>
+                <div class=author align=left>{{info.author}}</div>
+                <div class=remain align=left>{{info.remain}}</div>
+                <div class=price align=left>{{info.price}}</div>
             </div>
         </el-main>
     </el-container>
