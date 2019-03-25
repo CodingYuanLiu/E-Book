@@ -4,23 +4,10 @@
         <el-row style="margin-top:20px">
           <el-col :span="15">
               <div>
-              <router-link to="/">
+              <router-link to='/'>
               <img src="@/images/E-book.png" class="tit" align=left></img>
               </router-link>
               </div>
-          </el-col>
-          <el-col :span="7">
-              <el-input
-              placeholder="查找你喜欢的图书"
-              v-model="inputsearch"
-              clearable
-              prefix-icon="el-icon-search">
-              </el-input>
-          </el-col>
-          <el-col :span="1">
-              <el-button type="primary" plain>
-                  Search
-              </el-button>
           </el-col>
         </el-row>
       </el-header>
@@ -29,7 +16,7 @@
           <navmenu></navmenu>
         </el-aside>
         <el-main>
-            <router-view></router-view>
+          <router-view></router-view>
         </el-main>
       </el-container>
     </el-container>
@@ -44,9 +31,22 @@ import NavMenu from '@/components/NavMenu/Navmenu.vue'
       data() {
         return {
           inputsearch:""
+        }
+      },
+      methods: {
+        sendSearchinfo() {
+          //window.alert(this.inputsearch)
+          /*
+          this.$router.push({
+            name:'index',
+            params: {
+              searchinfo: this.inputsearch,
+              num:123
+            }
+          })*/
+        }
+      }
     }
-  }
-}
 </script>
 
 <style scoped>

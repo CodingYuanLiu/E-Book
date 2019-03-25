@@ -3,9 +3,9 @@
     <div class=book>
     <el-container>
         <el-aside width="160px" style="overflow:hidden;">
-            <router-link to="/details/book1" style="text-decoration: none">
+            <router-link :to="info.router" style="text-decoration: none">
             <div class=bookimage>
-            <img src="@/images/icsimage.jpg" style="height:180px"></img>
+            <img :src="info.pic" style="height:190px"></img>
             </div>
             </router-link>
         </el-aside>

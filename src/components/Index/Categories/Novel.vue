@@ -1,22 +1,30 @@
 <template>
 <div>
-    <el-row style="height:30px;">
+    <el-row>
         <div align=left class=stroke>中文小说推荐：</div>
     </el-row>
     <el-row class=el-row-books>
     <div class="line_split"></div>
     <div style="height:15px"></div>
+    <div v-for="book in books" v-if="book.type==3">
         <el-col :span="8">
-            <book2></book2>
+            <book1 :info="book"></book1>
         </el-col>
+    </div>
     </el-row>
 </div>
 </template>
 <script>
-import book2 from "@/components/Index/Books/book2.vue"
+import book1 from "@/components/Index/Books/book1.vue"
+import books from "@/config/book-info.js"
 export default{
       components:{
-          'book2':book2,
+          'book1':book1,
+      },
+      data() {
+          return {
+              books
+          }
       }
 }
 </script>
