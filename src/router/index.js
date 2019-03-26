@@ -8,6 +8,8 @@ import engineering from '@/components/Index/Categories/Engineering.vue'
 import novel from '@/components/Index/Categories/Novel.vue'
 import login from '@/components/Login/Login.vue'
 import signup from '@/components/Sign-up/Sign-up.vue'
+import cart from '@/components/Cart/Cart.vue'
+
 
 Vue.use(Router)
 export default new Router({
@@ -46,6 +48,11 @@ export default new Router({
       path: '/sign-up',
       name: 'sign-up',
       component: signup
+    },
+    {
+      path:'/cart',
+      name:'cart',
+      component:cart
     }
   ]
 })

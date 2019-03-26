@@ -3,9 +3,11 @@
     <el-col :span="19">
      欢迎来到E-book商城~
     </el-col>
+    <router-link to="/cart">
     <el-col :span="1">
         <i class="el-icon-goods">购物车</i>
     </el-col>
+    </router-link>
     <el-col :span="2">
         我的订单
     </el-col>

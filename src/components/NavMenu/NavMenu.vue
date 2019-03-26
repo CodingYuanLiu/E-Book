@@ -6,7 +6,7 @@
       @close="handleClose"
       unique-opened
       background-color="#545c64" text-color="#fff" 
-      style="min-height:600px">
+      style="min-height:800px">
       <el-submenu v-for="item in menu" v-if="item.sub.length" :index="item.id" :key="item.id">
         <template slot="title">
           <i class="el-icon-menu"></i>
