@@ -1,16 +1,82 @@
 export default{
     name:"login",
     data() {
+        var checkusername = (rule,value,callback) => {
+            if(value === '') {
+                callback(new Error("请输入用户名"))
+            }
+            callback();
+        };
+        var validatepass = (rule,value,callback) => {
+            if(value === ''){
+                callback(new Error('请输入密码'));
+            }
+            else{
+                if(this.form.dup_password !== ''){
+                    this.$refs.form.validateField('checkPass');
+                }
+            }
+            callback();
+        };
+        var validatePass2 = (rule, value, callback) => {
+            if (value === '') {
+              callback(new Error('请再次输入密码'));
+            } else if (value !== this.form.password) {
+              callback(new Error('两次输入密码不一致!'));
+            } else {
+              callback();
+            }
+          };
+        var validemail = (rule,value,callback) => {
+            if(value === '') {
+                callback(new Error('请输入邮箱'))
+            }
+            else{
+                var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                if(!re.test(value))
+                    callback(new Error('请输入有效邮箱'))
+            }
+            callback()
+        }
+    
+
         return {
-            username: '',
-            password: '',
-            dup_password:'',
-            email:''
+            form:{
+                username: '',
+                password: '',
+                dup_password:'',
+                email:''
+            },
+            signuprule: {
+                username: [
+                    {validator:checkusername, trigger:'blur'}
+                ],
+                password: [
+                    {validator:validatepass, trigger:'blur'}
+                ],
+                dup_password: [
+                    { validator:validatePass2, trigger:'blur'}
+                ],
+                email: [
+                    {validator:validemail, trigger:'blur'}
+                ]
+            }
         }
     },
     methods: {
-        output: function() {
-            window.alert("输入的用户名:"+this.username);
+        submitForm(formName) {
+            this.$refs[formName].validate((valid) => {
+                if(valid) {
+                    window.alert("提交成功，输入的用户名:"+ this.form.username)
+                }
+                else {
+                    window.alert("输入信息有误");
+                    return false;
+                }
+            });
+        },
+        resetForm(formName) {
+            this.$refs[formName].resetFields();
         }
     }
 }

@@ -1,0 +1,13 @@
+.total{
+    background-color: lightgray;
+    width: auto;
+    height:100px;
+    line-height: 100px;
+    margin-top:200px;
+}
+
+.submitbut{
+    margin-left:30px;
+    font-size:20px;
+    width:150px;
+}

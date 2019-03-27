@@ -8,32 +8,18 @@
         </div>
     </el-header>
     <el-main>
-    <el-row>
-        <div>
-        <el-col :span="6" align=right  class=inputline> 
-            用户名： 
-        </el-col>
-
-        <el-col :span="14" class=inputline>
-            <el-input v-model="username" placeholder="请输入内容" 
-            prefix-icon="el-icon-service"></el-input>
-        </el-col>
-        </div>
-    </el-row>
-    <el-row>
-        <div>
-        <el-col :span="6" align=right  class=inputline>
-            密码： 
-        </el-col>
-        <el-col :span="14" class=inputline>
-                <el-input placeholder="请输入密码" v-model="password" show-password 
-                prefix-icon="el-icon-edit"></el-input>
-        </el-col>
-        </div>
-    </el-row>
-    <el-row>
-      <el-button type="primary" style="width:200px;" @click="output()">登陆</el-button>
-    </el-row>
+    <el-form ref="form" status-icon :model="form" :rules="loginrule">
+        <el-form-item label="用户名" prop="username">
+            <el-input v-model="form.username"></el-input>
+        </el-form-item>
+        <el-form-item label="密码" prop="password">
+            <el-input type="password" v-model="form.password"></el-input>
+        </el-form-item>
+        <el-form-item align=left>
+            <el-button type="primary" style="width:150px; margin-top:50px;" @click="submitForm('form')">登陆</el-button>
+            <el-button @click="resetForm('form')">重置</el-button>
+        </el-form-item>
+    </el-form>
     </el-main>
     </el-container>
     </el-card>

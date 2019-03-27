@@ -8,9 +8,11 @@
         <i class="el-icon-goods">购物车</i>
     </el-col>
     </router-link>
+    <router-link to="/order">
     <el-col :span="2">
         我的订单
     </el-col>
+    </router-link>
     <router-link to="/login">
     <el-col :span="1">
         登陆

@@ -9,7 +9,7 @@ import novel from '@/components/Index/Categories/Novel.vue'
 import login from '@/components/Login/Login.vue'
 import signup from '@/components/Sign-up/Sign-up.vue'
 import cart from '@/components/Cart/Cart.vue'
-
+import order from '@/components/Order/Order.vue'
 
 Vue.use(Router)
 export default new Router({
@@ -53,6 +53,11 @@ export default new Router({
       path:'/cart',
       name:'cart',
       component:cart
+    },
+    {
+      path:'/order',
+      name:'order',
+      component:order
     }
   ]
 })
