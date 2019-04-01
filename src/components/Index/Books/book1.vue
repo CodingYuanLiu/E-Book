@@ -1,25 +1,25 @@
 <template>
+<router-link :to="info.router" style="text-decoration: none">
 <el-card shadow="hover" style="border-radius:20px;">
     <div class=book>
     <el-container>
         <el-aside width="160px" style="overflow:hidden;">
-            <router-link :to="info.router" style="text-decoration: none">
             <div class=bookimage>
             <img :src="info.pic" style="height:190px"></img>
             </div>
-            </router-link>
         </el-aside>
         <el-main style="overflow:hidden;">
             <div class=bookinfo>
-                <div :class="{'title': display,'title1':!display}" align=left @click="changecolor()">{{info.name}}</div>
-                <div class=author align=left>{{info.author}}</div>
-                <div class=remain align=left>{{info.remain}}</div>
+                <div class=title align=left>{{info.name}}</div>
+                <div class=author align=left>作者: {{info.author}}</div>
+                <div class=remain align=left>库存: {{info.remain}} ISBN编号: {{info.bnum}}</div>
                 <div class=price align=left>{{info.price}}</div>
             </div>
         </el-main>
     </el-container>
     </div>
 </el-card>
+</router-link>
 </template>
 <style scoped>
     @import './book.css';

@@ -9,8 +9,13 @@
     </el-col>
     </router-link>
     <router-link to="/order">
-    <el-col :span="2">
+    <el-col :span="1">
         我的订单
+    </el-col>
+    </router-link>
+    <router-link to="/scanning">
+    <el-col :span="1">
+        书籍浏览
     </el-col>
     </router-link>
     <router-link to="/login">

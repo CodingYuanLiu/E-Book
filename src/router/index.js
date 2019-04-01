@@ -11,6 +11,9 @@ import signup from '@/components/Sign-up/Sign-up.vue'
 import cart from '@/components/Cart/Cart.vue'
 import order from '@/components/Order/Order.vue'
 
+import scanning from '@/components/Scanning/Scanning.vue'
+
+
 Vue.use(Router)
 export default new Router({
   routes: [
@@ -58,6 +61,11 @@ export default new Router({
       path:'/order',
       name:'order',
       component:order
+    },
+    {
+      path:'/scanning',
+      name:'scanning',
+      component:scanning
     }
   ]
 })

@@ -1,7 +1,6 @@
 import book1 from "@/components/Index/Books/book1.vue"
 import book2 from "@/components/Index/Books/book2.vue"
 import books from "@/config/book-info.js"
-import reas from "@/components/BackGround/BackGround.vue"
 export default{
       components:{
           'book1':book1,

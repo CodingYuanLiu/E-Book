@@ -2,7 +2,6 @@ export default {
     name: 'mytest',
     data() {
         return {
-            display: true,
             book_info:[
             {
                 name: '深入理解计算机基础',
@@ -17,8 +16,5 @@ export default {
     mounted() {},
     computed: {},
     methods: {
-        changecolor: function(){
-            this.display=!this.display;
-        }
     }
 }
