@@ -28,14 +28,4 @@ module.exports = [{
     type:2,
     router:""
 },
-{
-    name: 'book2',
-    author:'author2',
-    remain:'16',
-    bnum:'004',
-    price:'28￥',
-    pic:require('@/images/book.jpg'),
-    type:4,
-    router:""
-},
 ]

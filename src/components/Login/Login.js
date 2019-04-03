@@ -1,3 +1,5 @@
+import books from '@/config/book-info.js'
+
 export default{
     name:"login",
     data() {
@@ -14,6 +16,8 @@ export default{
             callback();
         };
         return {
+            books,
+            isback: false,
             form: {
                 username: '',
                 password: ''
