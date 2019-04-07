@@ -3,16 +3,19 @@ import books from '@/config/book-info.js'
     data() {
       return {
           books,
+          returnbooks:null,
         search:''
       }
     },
     methods:{
         SubmitRequest(){
             this.$http.post('http://localhost:8080/scanning', {
-                book: JSON.stringify(this.books),
             }).then((res) => {
-                window.alert(JSON.stringify(res.body));
-            })
+                this.returnbooks = res.body;
+              })
         },
+    },
+    computed:{
+      
     }
   }
