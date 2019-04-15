@@ -5,7 +5,19 @@ export default{
             if(value === '') {
                 callback(new Error("请输入用户名"))
             }
-            callback();
+            else{
+                let is_dup;
+                this.$http.post('http://localhost:8080/checkdupusername',{
+                    username:String(this.form.username)
+                }).then((res)=>{
+                    is_dup = res.body;
+                    if(is_dup == true){
+                        callback(new Error("该用户名已被占用"))
+                    }
+                    else
+                        callback()
+                });
+            }
         };
         var validatepass = (rule,value,callback) => {
             if(value === ''){
@@ -67,7 +79,11 @@ export default{
         submitForm(formName) {
             this.$refs[formName].validate((valid) => {
                 if(valid) {
-                    window.alert("提交成功，输入的用户名:"+ this.form.username)
+                    this.$http.post('http://localhost:8080/register',{
+                        username:String(this.form.username),
+                        password:String(this.form.password),
+                        email:String(this.form.email)
+                    })
                 }
                 else {
                     window.alert("输入信息有误");

@@ -3,7 +3,18 @@
   <el-table
     :data="tableData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))"
     style="width: 100%"
+    :span-method="objectSpanMethod"
     ref="multipleTable">
+    <el-table-column label="订单号" width="200">
+      <template slot-scope="scope">
+        <span style="margin-left: 10px">{{ scope.row.orderid }}</span>
+      </template>
+    </el-table-column>
+    <el-table-column label="下单时间" width="200">
+      <template slot-scope="scope">
+        <span style="margin-left: 10px">{{ scope.row.time }}</span>
+      </template>
+    </el-table-column>
     <el-table-column width="130" label="商品信息">
       <template slot-scope="scope">
         <img :src="scope.row.pic" style="height:100px"></img>
@@ -55,31 +66,8 @@
   </div>
 </template>
 
-<script>
-  export default {
-    data() {
-      return {
-        tableData: [{
-          pic:require('@/images/icsimage.jpg'),
-          name:"深入理解计算机系统",
-          author:'Bryant,Hallaron',
-          bnum:'000',
-          num: 2,
-          price:128,
-        }, 
-        {
-          pic:require('@/images/mingdynasty.jpg'),
-          name:'明朝那些事儿',
-          author:'当年明月',
-          bnum:'002',
-          num: 1,
-          price:68,
-        }],
-        search:''
-      }
-    }
-    
-  }
+<script src="./Order.js">
+  
 </script>
 
 <style scoped>

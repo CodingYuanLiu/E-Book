@@ -1,8 +1,8 @@
 <template>
 <div>
-  <div v-if="returnbooks != null">
+  <div v-if="books != null">
   <el-table
-    :data="returnbooks.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))"
+    :data="books.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))"
     style="width: 100%"
     :default-sort = "{prop: 'date', order: 'descending'}"
     >
@@ -48,7 +48,6 @@
     </el-table-column>
   </el-table>
   </div>
-  <el-button type="danger" @click="SubmitRequest()">SubmitRequest</el-button>
 </div>
 </template>
 

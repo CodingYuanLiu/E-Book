@@ -1,11 +1,11 @@
 <template>
 <div>
     <el-row>
-        <div align=left class=stroke>工科类教材推荐：</div>
+        <div align=left class=stroke>文科类教材推荐：</div>
     </el-row>
     <el-row class=el-row-books>
     <div class="line_split"></div>
-    <div v-for="book in this.books" v-if="book.type==1">
+    <div v-for="book in this.books" v-if="book.type==3">
         <el-col :span="8">
             <book1 :info="book"></book1>
         </el-col>

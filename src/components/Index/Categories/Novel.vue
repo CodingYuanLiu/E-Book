@@ -5,8 +5,7 @@
     </el-row>
     <el-row class=el-row-books>
     <div class="line_split"></div>
-    <div style="height:15px"></div>
-    <div v-for="book in books" v-if="book.type==3">
+    <div v-for="book in this.books" v-if="book.type==4">
         <el-col :span="8">
             <book1 :info="book"></book1>
         </el-col>
@@ -15,18 +14,14 @@
 </div>
 </template>
 <script>
-import book1 from "@/components/Index/Books/book1.vue"
-import books from "@/config/book-info.js"
-export default{
-      components:{
-          'book1':book1,
-      },
-      data() {
-          return {
-              books
-          }
-      }
-}
+    import Scanning from "@/components/Scanning/Scanning.vue"
+    import book1 from "@/components/Index/Books/book1.vue"
+    export default{
+        mixins:[Scanning],
+        components:{
+            book1
+        }
+    }
 </script>
 <style scoped>
     @import '../Index.css';
