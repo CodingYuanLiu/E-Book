@@ -1,5 +1,5 @@
 import books from '@/config/book-info.js'
-
+import {mapActions} from 'vuex';
 export default{
     name:"login",
     data() {
@@ -33,15 +33,25 @@ export default{
         }
     },
     methods: {
+        ...mapActions(['login']),
         submitForm(formName) {
             this.$refs[formName].validate((valid) => {
                 if(valid) {
                     this.$http.post('http://localhost:8080/login',{
                         username:String(this.form.username),
                         password:String(this.form.password),
-                        email:String(this.form.email)
                     }).then((res)=>{
-                        window.alert(res.bodyText);
+                        let Authority = res.bodyText;
+                        if(Authority == "USER" || Authority == "ADMIN"){
+                            this.login({
+                                username:this.form.username,
+                                authority:Authority
+                            });
+                            this.$router.push(this.$route.query.redirect || '/')
+                        }
+                        else{
+                            window.alert(res.bodyText);
+                        }
                     })
                 }
                 else {

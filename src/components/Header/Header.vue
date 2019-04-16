@@ -1,6 +1,6 @@
 <template>
   <el-row  class="head-wrap">
-    <el-col :span="19">
+    <el-col :span="18">
      欢迎来到E-book商城~
     </el-col>
     <router-link to="/cart">
@@ -18,16 +18,26 @@
         书籍浏览
     </el-col>
     </router-link>
-    <router-link to="/login">
-    <el-col :span="1">
-        登陆
+    <el-col :span="2">
+      <div v-if="!isLogin">
+        <router-link to="/login">
+          登陆
+        </router-link>
+      </div>
+      <div v-if="isLogin">
+        您好，{{userinfo}},权限:{{authority}}
+      </div>
     </el-col>
-    </router-link>
-    <router-link to="/sign-up">
-    <el-col :span="1">
+    <el-col :span="1" >
+      <router-link to="/sign-up">
+      <div v-if="!isLogin">
         注册
+      </div>
+      </router-link>
+      <div v-if="isLogin" @click="onLogout">
+        退出登录
+      </div>
     </el-col>
-    </router-link>
   </el-row>
 </template>
 
@@ -41,3 +51,24 @@
   font-size:13px;
 }
 </style>
+<script>
+import { mapState, mapActions } from 'vuex';
+export default {
+  computed:{
+    ...mapState({
+      isLogin: state=>state.user.isLogin,
+      userinfo: state=>state.user.userinfo,
+      authority: state=>state.user.authority
+    })
+  },
+  methods:{
+    ...mapActions(['logout']),
+    onLogout(){
+      this.logout().then(()=>{
+        this.$router.push('/');
+      })
+    }
+  }
+  
+}
+</script>
