@@ -1,7 +1,8 @@
 const state = {
     isLogin:false,
     userinfo:null,
-    authority:null
+    authority:null,
+    userid:null
 };
 
 const getters = {};
@@ -15,14 +16,18 @@ const mutations = {
     },
     setAuthority(state,data){
         state.authority=data;
+    },
+    setUserid(state,data){
+        state.userid=data;
     }
 };
 
 const actions = {
-    login ({commit},{username,authority}){
+    login ({commit},{username,authority,userid}){
         commit('setIsLogin',true);
         commit('setUserInfo',username);
         commit('setAuthority',authority);
+        commit('setUserid',userid);
     },
     logout({commit}){
         commit('setIsLogin',false);

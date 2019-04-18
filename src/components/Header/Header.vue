@@ -25,7 +25,7 @@
         </router-link>
       </div>
       <div v-if="isLogin">
-        您好，{{userinfo}},权限:{{authority}}
+        您好，{{userinfo}},权限:{{authority}},{{userid}}
       </div>
     </el-col>
     <el-col :span="1" >
@@ -58,7 +58,8 @@ export default {
     ...mapState({
       isLogin: state=>state.user.isLogin,
       userinfo: state=>state.user.userinfo,
-      authority: state=>state.user.authority
+      authority: state=>state.user.authority,
+      userid:state=>state.user.userid
     })
   },
   methods:{

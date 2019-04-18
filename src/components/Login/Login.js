@@ -1,4 +1,3 @@
-import books from '@/config/book-info.js'
 import {mapActions} from 'vuex';
 export default{
     name:"login",
@@ -16,8 +15,6 @@ export default{
             callback();
         };
         return {
-            books,
-            isback: false,
             form: {
                 username: '',
                 password: ''
@@ -41,16 +38,17 @@ export default{
                         username:String(this.form.username),
                         password:String(this.form.password),
                     }).then((res)=>{
-                        let Authority = res.bodyText;
-                        if(Authority == "USER" || Authority == "ADMIN"){
-                            this.login({
-                                username:this.form.username,
-                                authority:Authority
-                            });
-                            this.$router.push(this.$route.query.redirect || '/')
+                        if(res.bodyText == "Wrong password" || res.bodyText == "Unexist Username"){
+                            window.alert(res.bodyText);
                         }
                         else{
-                            window.alert(res.bodyText);
+                            let result = JSON.parse(res.bodyText);
+                            this.login({
+                                username:this.form.username,
+                                authority:result.Authority,
+                                userid:result.userid,
+                            });
+                            this.$router.push(this.$route.query.redirect || '/')
                         }
                     })
                 }

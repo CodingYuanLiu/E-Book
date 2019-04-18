@@ -1,7 +1,10 @@
+import {mapState} from 'vuex';
+import { resolve } from 'path';
+
 export default {
     data() {
       return {
-        tableData: [{
+        tableDatas: [{
           orderid:1,
           time:"2018-9-12",
           pic:require('@/images/icsimage.jpg'),
@@ -9,7 +12,7 @@ export default {
           author:'Bryant,Hallaron',
           bnum:'000',
           num: 2,
-          price:128,
+          price:"128￥",
         }, 
         {
           orderid:2,
@@ -19,7 +22,7 @@ export default {
           author:'当年明月',
           bnum:'002',
           num: 1,
-          price:68,
+          price:"68￥",
         },
         {
           orderid:2,
@@ -29,32 +32,40 @@ export default {
           author:'Bryant,Hallaron',
           bnum:'000',
           num: 3,
-          price:128,
+          price:"128￥",
         }, 
         ],
         search:'',
-        spanArr:[]
+        spanArr:[],
+        tableData:[]
       }
     },
     created:function(){
-        let pos = 0;
-        for(var i=0;i<this.tableData.length;i++)
-        {
-          if(i === 0){
-            this.spanArr.push(1);
-          }
-          else
-          {
-            if(this.tableData[i].orderid === this.tableData[i-1].orderid){
-              this.spanArr[pos]+=1;
-              this.spanArr.push(0);
-            }
-            else{
-              pos = i;
-              this.spanArr.push(1)
-            }
-          }
-        }
+      this.$http.post('http://localhost:8080/orders', {
+              userid:this.userid
+            }).then((res) => {
+                window.alert(res.body);
+                this.tableData = res.body;
+                let pos = 0;
+                for(var i=0;i<this.tableData.length;i++)
+                {
+                  if(i === 0){
+                    this.spanArr.push(1);
+                  }
+                  else
+                  {
+                    if(this.tableData[i].orderid === this.tableData[i-1].orderid){
+                      this.spanArr[pos]+=1;
+                      this.spanArr.push(0);
+                    }
+                    else{
+                      pos = i;
+                      this.spanArr.push(1)
+                    }
+                  }
+                }
+              })
+        
     },
     methods:{
       objectSpanMethod({ row, column, rowIndex, columnIndex }) {
@@ -75,6 +86,14 @@ export default {
           };
         }
       }
+    },
+    computed:{
+      ...mapState({
+        isLogin: state=>state.user.isLogin,
+        userinfo: state=>state.user.userinfo,
+        authority: state=>state.user.authority,
+        userid:state=>state.user.userid
+      })
     }
     
   }

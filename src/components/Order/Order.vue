@@ -5,7 +5,7 @@
     style="width: 100%"
     :span-method="objectSpanMethod"
     ref="multipleTable">
-    <el-table-column label="订单号" width="200">
+    <el-table-column label="订单号" width="150">
       <template slot-scope="scope">
         <span style="margin-left: 10px">{{ scope.row.orderid }}</span>
       </template>
@@ -39,7 +39,7 @@
       label="单价"
       width="200">
       <template slot-scope="scope">
-        <span style="margin-left: 10px">￥{{ scope.row.price }}</span>
+        <span style="margin-left: 10px">{{ scope.row.price }}</span>
       </template>
     </el-table-column>
 
@@ -50,11 +50,11 @@
     </el-table-column>
     <el-table-column label="金额" width="100">
       <template slot-scope="scope">
-        <p>￥{{scope.row.num*scope.row.price}}</p>
+        <p>{{scope.row.num*parseInt(scope.row.price)}}￥</p>
       </template>
     </el-table-column>
     <el-table-column
-      align="right">
+      align="right" width="200">
       <template slot="header" slot-scope="scope">
         <el-input
           v-model="search"
