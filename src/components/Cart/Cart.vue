@@ -1,7 +1,7 @@
 <template>
 <div>
   <el-table
-    :data="tableData"
+    :data="CartItems"
     style="width: 100%"
     @selection-change="handleSelectionChange"
     ref="multipleTable">
@@ -65,57 +65,15 @@
         <p align=left style="margin-top:0px;font-size:30px;color:red">￥{{total}}</p>
       </el-col>
       <el-col :span="2" align=left> 
-        <el-button type="danger" plain class="submitbut"> 提交 </el-button>
+        <el-button type="danger" plain class="submitbut" @click="submitOrder"> 提交 </el-button>
       </el-col>
     </el-row>
   </div>
   </div>
 </template>
 
-<script>
-  export default {
-    data() {
-      return {
-        tableData: [{
-          pic:require('@/images/icsimage.jpg'),
-          name:"深入理解计算机系统",
-          author:'Bryant,Hallaron',
-          bnum:'000',
-          num: 1,
-          price:128,
-        }, 
-        {
-          pic:require('@/images/mingdynasty.jpg'),
-          name:'明朝那些事儿',
-          author:'当年明月',
-          bnum:'002',
-          num: 1,
-          price:68,
-        }],
-        multipleSelection: [],
-      }
-    },
-    methods: {
-      handleEdit(index, row) {
-        console.log(index, row);
-      },
-      handleDelete(index, row) {
-        console.log(index, row);
-      },
-      handleSelectionChange(val) {
-        this.multipleSelection = val;
-      },
-    },
-    computed: {
-      total: function() {
-          let sum=0
-          for(let i=0;i< this.multipleSelection.length ;i++) {
-            sum += this.multipleSelection[i].price * this.multipleSelection[i].num
-          }
-          return sum
-        }
-    }
-  }
+<script src="./Cart.js">
+
 </script>
 
 <style scoped>

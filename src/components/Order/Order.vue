@@ -1,5 +1,25 @@
 <template>
 <div>
+  <template>
+        <el-time-picker
+          is-range
+          v-model="timerange"
+          value-format="HH:mm:ss"
+          range-separator="至"
+          start-placeholder="开始时间"
+          end-placeholder="结束时间"
+          placeholder="选择时间范围">
+        </el-time-picker>
+        <div>
+          <el-date-picker
+            v-model="value1"
+            type="date"
+            format="yyyy 年 MM 月 dd 日"
+            value-format="yyyy-MM-dd"
+            placeholder="选择日期">
+          </el-date-picker>
+        </div>
+  </template>
   <el-table
     :data="tableData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))"
     style="width: 100%"
@@ -43,23 +63,30 @@
       </template>
     </el-table-column>
 
-    <el-table-column label="数量" width="200">
+    <el-table-column label="数量" width="120">
       <template slot-scope="scope">
         <span style="margin-left: 10px">{{ scope.row.num }}</span>
       </template>
     </el-table-column>
-    <el-table-column label="金额" width="100">
+    <el-table-column label="金额" width="150">
       <template slot-scope="scope">
         <p>{{scope.row.num*parseInt(scope.row.price)}}￥</p>
       </template>
     </el-table-column>
+    
+    <el-table-column label="用户编号" width="100"  v-if="authority=='ADMIN'">
+      <template slot-scope="scope">
+        <p>{{scope.row.userid}}</p>
+      </template>
+    </el-table-column>
+
     <el-table-column
       align="right" width="200">
       <template slot="header" slot-scope="scope">
         <el-input
           v-model="search"
           size="mini"
-          placeholder="输入关键字搜索"/>
+          placeholder="输入书名搜索"/>
       </template>
     </el-table-column>
   </el-table>

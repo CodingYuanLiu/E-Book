@@ -31,6 +31,9 @@ const actions = {
     },
     logout({commit}){
         commit('setIsLogin',false);
+        commit('setUserInfo',null);
+        commit('setAuthority',null);
+        commit('setUserid',null);
     }
 };
 

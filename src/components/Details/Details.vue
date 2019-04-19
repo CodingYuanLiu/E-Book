@@ -11,7 +11,7 @@
                 <el-header>
                     <el-card shadow="never" class=titlecard align=left>
                         <div class=title>{{book.name}}</div>
-                        <div class=abstract>上海交大软件学院ICS教材</div>    
+                        <div class=abstract>{{book.router}}</div>    
                     </el-card>
                 </el-header>
                 <el-main>
@@ -24,7 +24,7 @@
                             </el-col>
                             <el-col :span="16">
                                 <div align=left class=author>
-                                    出版社: 机械工业出版社
+                                    ISBN编号: {{book.bnum}}
                                 </div>
                             </el-col>
                         </el-row>
@@ -43,7 +43,7 @@
                             </el-col>
                             <el-col :span="19">
                                 <div class=author style= "line-height:70px;color:black;">
-                                    （库存：10）
+                                    （库存：{{book.remain}}）
                                 </div>
                             </el-col>
                             
@@ -61,10 +61,7 @@
                                     </el-input-number>
                                 </el-col>
                                 <el-col :span="4">
-                                    <el-button type="danger" plain>加入购物车</el-button>
-                                </el-col>
-                                <el-col :span="6">
-                                    <el-button type="warning">立即购买</el-button>
+                                    <el-button type="danger" plain @click="submitItem">加入购物车</el-button>
                                 </el-col>
                             </el-row>
 
@@ -80,6 +77,7 @@
     @import "./Details.css";
 </style>
 <script>
+  import {mapMutations,mapState} from 'vuex'
   export default {
     data() {
       return {
@@ -88,12 +86,28 @@
       };
     },
     methods: {
+      ...mapMutations(['addCart']),
       handleChange(value) {
         console.log(value);
+      },
+      submitItem() {
+          if(!this.isLogin){
+              window.alert("请先登录噢亲~")
+              this.$router.push('login')
+          }
+          else{
+            this.addCart({book:this.book,count:this.num1});
+            this.$router.push(this.$route.query.redirect || '/')
+          }
       }
     },
     created() {
         this.book=this.$route.query.name;
+    },
+    computed:{
+        ...mapState({
+            isLogin:state=>state.user.isLogin
+        })
     }
   };
 </script>

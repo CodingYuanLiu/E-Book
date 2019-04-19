@@ -1,9 +1,9 @@
 import {mapState} from 'vuex';
-import { resolve } from 'path';
 
 export default {
     data() {
       return {
+        /*
         tableDatas: [{
           orderid:1,
           time:"2018-9-12",
@@ -34,17 +34,18 @@ export default {
           num: 3,
           price:"128￥",
         }, 
-        ],
+        ],*/
         search:'',
         spanArr:[],
-        tableData:[]
+        tableData:[],
+        timerange:['', ''],
+        value1:''
       }
     },
     created:function(){
       this.$http.post('http://localhost:8080/orders', {
               userid:this.userid
             }).then((res) => {
-                window.alert(res.body);
                 this.tableData = res.body;
                 let pos = 0;
                 for(var i=0;i<this.tableData.length;i++)
@@ -90,7 +91,6 @@ export default {
     computed:{
       ...mapState({
         isLogin: state=>state.user.isLogin,
-        userinfo: state=>state.user.userinfo,
         authority: state=>state.user.authority,
         userid:state=>state.user.userid
       })

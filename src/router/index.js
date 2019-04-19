@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import store from '@/store/index.js'
+
 import index from '@/components/Index/Index.vue'
 import detbook1 from '@/components/Details/DetBook1.vue'
 import detbook2 from '@/components/Details/DetBook2.vue'
@@ -12,15 +14,15 @@ import order from '@/components/Order/Order.vue'
 import science from '@/components/Index/Categories/Science.vue'
 import arts from '@/components/Index/Categories/Arts.vue'
 import children from '@/components/Index/Categories/Children.vue'
-
+import details from '@/components/Details/Details.vue'
 
 import scanning from '@/components/Scanning/Scanning.vue'
 
 
 Vue.use(Router)
-export default new Router({
+const router = new Router({
   mode:"history",
-  base:"/EBook/",
+  //base:"/EBook/",
   routes: [
     {
       path: '/',
@@ -36,6 +38,11 @@ export default new Router({
       path: '/details/book2',
       name: 'detbook2',
       component: detbook2
+    },
+    {
+      path:'/details/',
+      name:'details',
+      component:details
     },
     {
       path: '/engineering',
@@ -60,12 +67,18 @@ export default new Router({
     {
       path:'/cart',
       name:'cart',
-      component:cart
+      component:cart,
+      meta:{
+        requireLogin:true
+      }
     },
     {
       path:'/order',
       name:'order',
-      component:order
+      component:order,
+      meta:{
+        requireLogin:true
+      }
     },
     {
       path:'/scanning',
@@ -86,6 +99,31 @@ export default new Router({
       path:'/children',
       name:'children',
       component:children
+    },
+    {
+      path:'**',
+      redirect:'/'
     }
   ]
 })
+
+
+router.beforeEach((to,from,next) =>{
+  if(to.matched.some(r=>r.meta.requireLogin)){
+    console.log(store.state.user.isLogin);
+    if(store.state.user.isLogin){
+      next();
+    }
+    else{
+      next({
+        path:'/login',
+        query:{redirect:to.fullPath}
+      })
+    }
+  }
+  else{
+    next();
+  }
+});
+
+export default router;
