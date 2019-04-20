@@ -11,3 +11,22 @@
     font-size:20px;
     width:150px;
 }
+
+.timesetter{
+    height:80px;
+    line-height: 80px;
+    width:50px;
+    font-family:'Times New Roman', Times, serif;
+}
+
+.header{
+    height:10px;
+    line-height:10px;
+    width:200px;
+    font-family:'Times New Roman', Times, serif;
+}
+.Total{
+    height:60px;
+    line-height: 60px;
+    font-family:'Times New Roman', Times, serif;
+}

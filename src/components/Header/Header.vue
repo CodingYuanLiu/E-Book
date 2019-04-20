@@ -5,11 +5,19 @@
     </el-col>
     <el-col :span="1">
       <div v-if="authority=='USER' ||authority==null">&nbsp</div>
-      <div v-if="authority=='ADMIN'">admin</div>
+      <div v-if="authority=='ADMIN'">
+        <router-link to="/statistic">
+          统计
+        </router-link>
+      </div>
     </el-col>
     <el-col :span="1">
       <div v-if="authority=='USER'||authority==null">&nbsp</div>
-      <div v-if="authority=='ADMIN'">admin</div>
+      <div v-if="authority=='ADMIN'">
+        <router-link to="/usermanage">
+          用户管理
+        </router-link>
+      </div>
     </el-col>
     <el-col :span="1">
       <router-link to="/cart">

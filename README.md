@@ -25,7 +25,7 @@ npm i element-ui
 # install dependencies
 npm install
 
-# serve with hot reload at localhost:8080
+# serve with hot reload at localhost:8081
 npm run dev
 
 ```
@@ -34,5 +34,4 @@ npm run dev
 * 还没有正确解决details问题。
 * scanning界面（router地址为/scanning）为课堂demo表格，做了备用（可能书籍管理会用到）。
 * 目前利用vuex保存登陆信息（刷新没）。后面可以考虑存在Session里面。
-* 还没有做管理员的特有功能（用户管理和图书管理功能）
-* 还没有做统计功能
+* 图书管理缺失细节

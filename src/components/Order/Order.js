@@ -3,68 +3,19 @@ import {mapState} from 'vuex';
 export default {
     data() {
       return {
-        /*
-        tableDatas: [{
-          orderid:1,
-          time:"2018-9-12",
-          pic:require('@/images/icsimage.jpg'),
-          name:"深入理解计算机系统",
-          author:'Bryant,Hallaron',
-          bnum:'000',
-          num: 2,
-          price:"128￥",
-        }, 
-        {
-          orderid:2,
-          time:"2019-4-13",
-          pic:require('@/images/mingdynasty.jpg'),
-          name:'明朝那些事儿',
-          author:'当年明月',
-          bnum:'002',
-          num: 1,
-          price:"68￥",
-        },
-        {
-          orderid:2,
-          time:"2019-4-13",
-          pic:require('@/images/icsimage.jpg'),
-          name:"深入理解计算机系统",
-          author:'Bryant,Hallaron',
-          bnum:'000',
-          num: 3,
-          price:"128￥",
-        }, 
-        ],*/
         search:'',
         spanArr:[],
-        tableData:[],
+        Orders:[],
+        selectuser:'',
         timerange:['', ''],
-        value1:''
       }
     },
     created:function(){
       this.$http.post('http://localhost:8080/orders', {
               userid:this.userid
             }).then((res) => {
-                this.tableData = res.body;
-                let pos = 0;
-                for(var i=0;i<this.tableData.length;i++)
-                {
-                  if(i === 0){
-                    this.spanArr.push(1);
-                  }
-                  else
-                  {
-                    if(this.tableData[i].orderid === this.tableData[i-1].orderid){
-                      this.spanArr[pos]+=1;
-                      this.spanArr.push(0);
-                    }
-                    else{
-                      pos = i;
-                      this.spanArr.push(1)
-                    }
-                  }
-                }
+                this.Orders = res.body;
+                this.getSpanArr(this.Orders)
               })
         
     },
@@ -86,6 +37,30 @@ export default {
             colspan: _col
           };
         }
+      },
+      clear(){
+        this.timerange=['','']
+      },
+      getSpanArr(statistic){
+        let pos = 0;
+        this.spanArr=[];
+        for(var i=0;i<statistic.length;i++)
+        {
+          if(i === 0){
+            this.spanArr.push(1);
+          }
+          else
+          {
+            if(statistic[i].orderid === statistic[i-1].orderid){
+              this.spanArr[pos]+=1;
+              this.spanArr.push(0);
+            }
+            else{
+            pos = i;
+            this.spanArr.push(1)
+            }
+          }
+        }
       }
     },
     computed:{
@@ -93,7 +68,35 @@ export default {
         isLogin: state=>state.user.isLogin,
         authority: state=>state.user.authority,
         userid:state=>state.user.userid
-      })
+      }),
+      tableDatas:function(){
+        if(this.Orders!=null){
+          let statistic = [];
+          if(this.timerange[0] == '' || this.timerange[1] == ''){
+            this.getSpanArr(this.Orders);
+            return this.Orders;
+          }
+          let arr = [...this.Orders];
+          for(var i = 0;i<arr.length;i++){
+            if(arr[i].time >this.timerange[0] && arr[i].time < this.timerange[1]){
+              statistic.push(arr[i]);
+            }
+          }
+          this.getSpanArr(statistic);
+          return statistic;
+        }
+      },
+      usertotal:function(){
+        let tot=0;
+        if(this.Orders!=null){
+          for(var i =0;i<this.Orders.length;i++){
+            if(this.Orders[i].userid==parseInt(this.selectuser)){
+              tot+=parseInt(this.Orders[i].price)*parseInt(this.Orders[i].num);
+            }
+          }
+        }
+        return tot
+      }
     }
     
   }

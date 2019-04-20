@@ -1,22 +1,34 @@
+  import { mapState } from 'vuex';
   export default {
     data() {
       return {
           books:null,
-        search:''
+          search:'',
+          isEdit:[]
       }
     },
     created:function() {
       this.$http.post('http://localhost:8080/scanning', {
             }).then((res) => {
                 this.books = res.body;
+                for(var i =0;i<res.body.length;i++){
+                  this.isEdit.push(false);
+                }
               })
     },
     methods:{
         SubmitRequest(){
             window.alert("hello")
         },
+        handleEdit(index){
+          console.log(this.isEdit[index]);
+          this.isEdit[index]=!this.isEdit[index];
+        }
     },
     computed:{
+      ...mapState({
+        authority:state=>state.user.authority,
+      })
       
     }
   }

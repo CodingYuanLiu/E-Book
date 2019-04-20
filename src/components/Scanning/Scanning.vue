@@ -14,19 +14,38 @@
       </template>
     </el-table-column>
     <el-table-column
-      prop="name"
       label="书名"
       sortable
       width="180">
+      <template slot-scope="scope">
+        <div v-if="isEdit[scope.$index] && authority=='ADMIN'">
+          <el-input v-model="scope.row.name">
+          </el-input>
+        </div>
+        <div v-else>{{scope.row.name}}</div>
+      </template>
     </el-table-column>
     <el-table-column
-      prop="author"
       label="作者">
+      <template slot-scope="scope">
+        <div v-if="isEdit[scope.$index] && authority=='ADMIN'">
+          <el-input v-model="scope.row.author">
+          </el-input>
+        </div>
+        <div v-else>{{scope.row.author}}</div>
+      </template>
     </el-table-column>
     <el-table-column
       prop="remain"
       label="库存"
       sortable>
+      <template slot-scope="scope">
+        <div v-if="isEdit[scope.$index] && authority=='ADMIN'">
+          <el-input v-model="scope.row.remain">
+          </el-input>
+        </div>
+        <div v-else>{{scope.row.remain}}</div>
+      </template>
     </el-table-column>
     <el-table-column
       prop="bnum"
@@ -34,10 +53,25 @@
       sortable>
     </el-table-column>
     <el-table-column
-      prop="price"
       label="单价"
       sortable width="100">
+      <template slot-scope="scope">
+        <div v-if="isEdit[scope.$index] && authority=='ADMIN'">
+          <el-input v-model="scope.row.price">
+          </el-input>
+        </div>
+        <div v-else>{{scope.row.price}}</div>
+      </template>
     </el-table-column>
+    <el-table-column label="操作" width="100" v-if="authority=='ADMIN'">
+        <template slot-scope="scope">
+            <el-button 
+            size="mini" type="danger"
+            @click="handleEdit(scope.$index,scope.row)">编辑</el-button>
+            
+        </template>
+    </el-table-column>
+
     <el-table-column>
       <template slot="header" slot-scope="scope">
         <el-input
@@ -46,6 +80,7 @@
           placeholder="输入关键字搜索"/>
       </template>
     </el-table-column>
+    
   </el-table>
   </div>
 </div>

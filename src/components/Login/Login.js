@@ -41,12 +41,16 @@ export default{
                         if(res.bodyText == "Wrong password" || res.bodyText == "Unexist Username"){
                             window.alert(res.bodyText);
                         }
+                        else if(res.bodyText == "BLOCKED USER"){
+                            window.alert("该用户已被禁用，无法登陆系统");
+                        }
                         else{
                             let result = JSON.parse(res.bodyText);
                             this.login({
                                 username:this.form.username,
                                 authority:result.Authority,
                                 userid:result.userid,
+                                
                             });
                             this.$router.push(this.$route.query.redirect || '/')
                         }

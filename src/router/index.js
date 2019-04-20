@@ -3,8 +3,6 @@ import Router from 'vue-router'
 import store from '@/store/index.js'
 
 import index from '@/components/Index/Index.vue'
-import detbook1 from '@/components/Details/DetBook1.vue'
-import detbook2 from '@/components/Details/DetBook2.vue'
 import engineering from '@/components/Index/Categories/Engineering.vue'
 import novel from '@/components/Index/Categories/Novel.vue'
 import login from '@/components/Login/Login.vue'
@@ -16,6 +14,8 @@ import arts from '@/components/Index/Categories/Arts.vue'
 import children from '@/components/Index/Categories/Children.vue'
 import details from '@/components/Details/Details.vue'
 
+import statistic from '@/components/Statistic/Statistic.vue'
+import usermanage from '@/components/Usermanage/Usermanage.vue'
 import scanning from '@/components/Scanning/Scanning.vue'
 
 
@@ -28,16 +28,6 @@ const router = new Router({
       path: '/',
       name: 'index',
       component: index
-    },
-    {
-      path: '/details/book1',
-      name: 'detbook1',
-      component: detbook1
-    },
-    {
-      path: '/details/book2',
-      name: 'detbook2',
-      component: detbook2
     },
     {
       path:'/details/',
@@ -101,6 +91,24 @@ const router = new Router({
       component:children
     },
     {
+      path:'/statistic',
+      name:'statistic',
+      component:statistic,
+      meta:{
+        requireLogin:true,
+        requireAdmin:true
+      }
+    },
+    {
+      path:'/usermanage',
+      name:'usermanage',
+      component:usermanage,
+      meta:{
+        requireLogin:true,
+        requireAdmin:true
+      }
+    },
+    {
       path:'**',
       redirect:'/'
     }
@@ -109,8 +117,18 @@ const router = new Router({
 
 
 router.beforeEach((to,from,next) =>{
+  if(to.matched.some(r=>r.meta.requireAdmin)){
+    if(store.state.user.authority=="ADMIN"){
+      next();
+    }
+    else{
+      window.alert("抱歉，您不是管理员。请重新登陆");
+      next({
+        path:'/login',
+      })
+    }
+  }
   if(to.matched.some(r=>r.meta.requireLogin)){
-    console.log(store.state.user.isLogin);
     if(store.state.user.isLogin){
       next();
     }

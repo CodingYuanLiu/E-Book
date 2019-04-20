@@ -1,28 +1,8 @@
 <template>
 <div>
-  <template>
-        <el-time-picker
-          is-range
-          v-model="timerange"
-          value-format="HH:mm:ss"
-          range-separator="至"
-          start-placeholder="开始时间"
-          end-placeholder="结束时间"
-          placeholder="选择时间范围">
-        </el-time-picker>
-        <div>
-          <el-date-picker
-            v-model="value1"
-            type="date"
-            format="yyyy 年 MM 月 dd 日"
-            value-format="yyyy-MM-dd"
-            placeholder="选择日期">
-          </el-date-picker>
-        </div>
-  </template>
   <el-table
-    :data="tableData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))"
-    style="width: 100%"
+    :data="tableDatas.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))"
+    style="width: 100%;"
     :span-method="objectSpanMethod"
     ref="multipleTable">
     <el-table-column label="订单号" width="150">
@@ -90,6 +70,43 @@
       </template>
     </el-table-column>
   </el-table>
+
+  <el-row>
+    <el-col :span="12">
+      <el-card style="width:550px;" shadow="hover">
+      <div slot="header" align=left  class="header">
+        订单时间段查询：
+      </div>
+      <div class="timesetter" align=left>
+      <el-date-picker
+                v-model="timerange"
+                type="datetimerange"
+                value-format="yyyy-MM-dd HH:mm:ss"
+                range-separator="至"
+                start-placeholder="开始日期"
+                end-placeholder="结束日期">
+        </el-date-picker>
+        <el-button @click="clear">清空</el-button>
+      </div>
+      </el-card>
+    </el-col>
+
+
+    <el-col :span="8" v-if="this.authority=='ADMIN'">
+      <el-card style="width:550px;" shadow="hover">
+      <div slot="header" style="height:30px;margin-top:-10px;" align=left  class="header">
+        选择用户:
+        <el-input style="width:50px;" v-model="selectuser">
+        </el-input>
+      </div>
+      
+      <div class="Total" align=left>
+        总消费金额: {{usertotal}}
+      </div>
+      </el-card>
+    </el-col>
+  </el-row>
+          
   </div>
 </template>
 
