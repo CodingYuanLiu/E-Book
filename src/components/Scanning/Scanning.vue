@@ -41,8 +41,10 @@
       sortable>
       <template slot-scope="scope">
         <div v-if="isEdit[scope.$index] && authority=='ADMIN'">
-          <el-input v-model="scope.row.remain">
-          </el-input>
+          
+          <el-input-number v-model="scope.row.remain" :min="1" :max="100000">
+
+          </el-input-number>
         </div>
         <div v-else>{{scope.row.remain}}</div>
       </template>
@@ -66,9 +68,12 @@
     <el-table-column label="操作" width="100" v-if="authority=='ADMIN'">
         <template slot-scope="scope">
             <el-button 
-            size="mini" type="danger"
-            @click="handleEdit(scope.$index,scope.row)">编辑</el-button>
-            
+            size="mini" type="danger" v-if="!isEdit[scope.$index]"
+            @click="handleEdit(scope.$index)">编辑</el-button>
+            <el-button 
+            size="mini" type="danger" v-else
+            @click="handleEnsure(scope.$index,scope.row)">确认</el-button>
+
         </template>
     </el-table-column>
 

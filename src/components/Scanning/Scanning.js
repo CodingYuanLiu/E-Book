@@ -21,8 +21,14 @@
             window.alert("hello")
         },
         handleEdit(index){
-          console.log(this.isEdit[index]);
-          this.isEdit[index]=!this.isEdit[index];
+          //console.log(this.isEdit[index]);
+          this.isEdit[index]=true;
+        },
+        handleEnsure(index,row){
+          this.isEdit[index]=false;
+          this.$http.post('http://localhost:8080/modifying',{
+            bookstring:JSON.stringify(row),
+          });
         }
     },
     computed:{
