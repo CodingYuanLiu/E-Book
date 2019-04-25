@@ -29,6 +29,21 @@
           this.$http.post('http://localhost:8080/modifying',{
             bookstring:JSON.stringify(row),
           });
+        },
+        Addbook(){
+          /*
+          var abook = {
+            name:'',
+            author:'',
+            pic:'',
+            price:'',
+            remain:0,
+            router:'',
+            type:1,
+          };
+          console.log(abook);
+          this.books.push(abook);
+          this.isEdit.push(true);*/
         }
     },
     computed:{

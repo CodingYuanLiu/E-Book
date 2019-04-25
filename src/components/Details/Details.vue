@@ -92,7 +92,7 @@
       },
       submitItem() {
           if(!this.isLogin){
-              window.alert("请先登录噢亲~")
+              this.$message("请先登录噢亲~")
               this.$router.push('login')
           }
           else{

@@ -39,10 +39,10 @@ export default{
                         password:String(this.form.password),
                     }).then((res)=>{
                         if(res.bodyText == "Wrong password" || res.bodyText == "Unexist Username"){
-                            window.alert(res.bodyText);
+                            this.$message(res.bodyText);
                         }
                         else if(res.bodyText == "BLOCKED USER"){
-                            window.alert("该用户已被禁用，无法登陆系统");
+                            this.$message("该用户已被禁用，无法登陆系统");
                         }
                         else{
                             let result = JSON.parse(res.bodyText);
@@ -57,7 +57,7 @@ export default{
                     })
                 }
                 else {
-                    window.alert("输入信息有误");
+                    this.$message("输入信息有误");
                     return false;
                 }
             });
