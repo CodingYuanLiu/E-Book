@@ -32,6 +32,7 @@
       </template>
     </el-table-column>
     <el-table-column
+    width="180"
       label="作者">
       <template slot-scope="scope">
         <div v-if="isEdit[scope.$index] && authority=='ADMIN'">
@@ -44,6 +45,7 @@
     <el-table-column
       prop="remain"
       label="库存"
+      width="150"
       sortable>
       <template slot-scope="scope">
         <div v-if="isEdit[scope.$index] && authority=='ADMIN'">
@@ -58,6 +60,7 @@
     <el-table-column
       prop="bnum"
       label="ISBN编号"
+      width="150"
       sortable>
     </el-table-column>
 
@@ -90,15 +93,18 @@
               </el-col>
               <el-col :span="4" style="margin-top:5px;">
               <el-button 
-                size="mini" type="danger"
+                size="mini" type="warning"
                 @click="handleEnsure(scope.$index,scope.row)">确认</el-button>
               </el-col>
             </el-row>
           
           </div>
             <el-button 
-            size="mini" type="danger" v-if="!isEdit[scope.$index]"
+            size="mini" type="warning" v-if="!isEdit[scope.$index]"
             @click="handleEdit(scope.$index)">编辑</el-button>
+            <el-button 
+            size="mini" type="danger" v-if="!isEdit[scope.$index]"
+            @click="handleDelete(scope.$index,scope.row)">删除</el-button>
             
 
         </template>

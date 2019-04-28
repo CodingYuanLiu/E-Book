@@ -14,7 +14,10 @@ import {mapState,mapMutations} from 'vuex';
         this.multipleSelection = val;
       },
       submitOrder() {
-        
+        if(this.multipleSelection.length==0){
+          this.$message("请选择要购买的书籍");
+          return;
+        }
         this.$http.post('http://localhost:8080/submitorder',{
             receive:JSON.stringify(this.multipleSelection),
             re_userid:this.userid

@@ -28,10 +28,19 @@
           this.isEdit[index]=false;
           this.$http.post('http://localhost:8080/modifying',{
             bookstring:JSON.stringify(row),
+          }).then((res)=>{
+              this.books.splice(index,1,res.body);
+          });
+        },
+        handleDelete(index,row){
+          this.$http.post('http://localhost:8080/delete',{
+            bnumstr:row.bnum
+          }).then((res)=>{
+            this.isEdit.splice(index,1);
+            this.books.splice(index,1);
           });
         },
         Addbook(){
-          /*
           var abook = {
             name:'',
             author:'',
@@ -41,9 +50,8 @@
             router:'',
             type:1,
           };
-          console.log(abook);
           this.books.push(abook);
-          this.isEdit.push(true);*/
+          this.isEdit.push(true);
         }
     },
     computed:{

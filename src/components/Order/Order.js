@@ -15,6 +15,7 @@ export default {
               userid:this.userid
             }).then((res) => {
                 this.Orders = res.body;
+                this.Orders = this.Orders.sort();
                 this.getSpanArr(this.Orders)
               })
         
