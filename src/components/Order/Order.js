@@ -52,7 +52,7 @@ export default {
           }
           else
           {
-            if(statistic[i].orderid === statistic[i-1].orderid){
+            if(statistic[i].order.orderid === statistic[i-1].order.orderid){
               this.spanArr[pos]+=1;
               this.spanArr.push(0);
             }
@@ -79,7 +79,7 @@ export default {
           }
           let arr = [...this.Orders];
           for(var i = 0;i<arr.length;i++){
-            if(arr[i].time >this.timerange[0] && arr[i].time < this.timerange[1]){
+            if(arr[i].order.time >this.timerange[0] && arr[i].order.time < this.timerange[1]){
               statistic.push(arr[i]);
             }
           }
@@ -88,11 +88,11 @@ export default {
         }
       },
       usertotal:function(){
-        let tot=0;
+        let tot = 0;
         if(this.Orders!=null){
-          for(var i =0;i<this.Orders.length;i++){
-            if(this.Orders[i].userid==parseInt(this.selectuser)){
-              tot+=parseInt(this.Orders[i].price)*parseInt(this.Orders[i].num);
+          for(var i = 0;i<this.Orders.length;i++){
+            if(this.Orders[i].order.user.userid==parseInt(this.selectuser)){
+              tot+=parseInt(this.Orders[i].book.price)*parseInt(this.Orders[i].num);
             }
           }
         }

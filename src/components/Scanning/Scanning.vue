@@ -72,7 +72,7 @@
           <el-input v-model="scope.row.price">
           </el-input>
         </div>
-        <div v-else>{{scope.row.price}}</div>
+        <div v-else>￥{{scope.row.price}}</div>
       </template>
     </el-table-column>
     <el-table-column label="操作" width="300" v-if="authority=='ADMIN'">
