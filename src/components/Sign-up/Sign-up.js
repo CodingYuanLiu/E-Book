@@ -84,11 +84,11 @@ export default{
                         password:String(this.form.password),
                         email:String(this.form.email)
                     })
-                    window.alert("注册成功！")
+                    this.$message("注册成功！")
                     this.$router.push(this.$route.query.redirect || '/')
                 }
                 else {
-                    window.alert("输入信息有误");
+                    this.$message("输入信息有误");
                     return false;
                 }
             });

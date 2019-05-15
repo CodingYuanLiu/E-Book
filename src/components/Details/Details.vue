@@ -24,7 +24,7 @@
                             </el-col>
                             <el-col :span="16">
                                 <div align=left class=author>
-                                    ISBN编号: {{book.bnum}}
+                                    ISBN编号: {{book.isbn}}
                                 </div>
                             </el-col>
                         </el-row>

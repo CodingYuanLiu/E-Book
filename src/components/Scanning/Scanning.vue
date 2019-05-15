@@ -58,10 +58,18 @@
       </template>
     </el-table-column>
     <el-table-column
-      prop="bnum"
       label="ISBN编号"
       width="150"
       sortable>
+      <template slot-scope="scope">
+        <div v-if="isEdit[scope.$index] && authority=='ADMIN'">
+          <el-input v-model="scope.row.isbn">
+          </el-input>
+        </div>
+        <div v-else>
+        {{scope.row.isbn}}
+        </div>
+      </template>
     </el-table-column>
 
     <el-table-column

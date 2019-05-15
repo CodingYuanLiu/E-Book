@@ -12,7 +12,7 @@
             <div class=bookinfo>
                 <div class=title align=left>{{info.name}}</div>
                 <div class=author align=left>作者: {{info.author}}</div>
-                <div class=remain align=left>库存: {{info.remain}} ISBN编号: {{info.bnum}}</div>
+                <div class=remain align=left>库存: {{info.remain}} ISBN编号: {{info.isbn}}</div>
                 <div class=price align=left>￥{{info.price}}</div>
             </div>
         </el-main>

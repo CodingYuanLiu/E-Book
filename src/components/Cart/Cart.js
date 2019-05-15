@@ -23,13 +23,13 @@ import {mapState,mapMutations} from 'vuex';
             re_userid:this.userid
         }).then((res)=>{
           if(res.bodyText == "Not enough remaining"){
-            window.alert("部分书籍库存不足")
+            this.$message("部分书籍库存不足")
           }
           else if(res.bodyText == "Fail"){
-            window.alert("库存不足，订单生成失败")
+            this.$message("库存不足，订单生成失败")
           }
           else{
-            window.alert("下单成功！")
+            this.$message("下单成功！")
           }
         });
         for(var i =0;i<this.multipleSelection.length;i++){

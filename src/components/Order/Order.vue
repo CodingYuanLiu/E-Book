@@ -39,7 +39,7 @@
       label="单价"
       width="200">
       <template slot-scope="scope">
-        <span style="margin-left: 10px">{{ scope.row.book.price }}</span>
+        <span style="margin-left: 10px">{{ scope.row.book.price }}￥</span>
       </template>
     </el-table-column>
 
