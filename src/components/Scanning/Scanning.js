@@ -10,8 +10,8 @@
     created:function() {
       this.$http.post('http://localhost:8080/scanning', {
             }).then((res) => {
-                this.books = res.body;
-                for(var i =0;i<res.body.length;i++){
+                this.books = res.body.data;
+                for(var i =0;i<res.body.data.length;i++){
                   this.isEdit.push(false);
                 }
               })
@@ -29,7 +29,7 @@
           this.$http.post('http://localhost:8080/modifying',{
             bookstring:JSON.stringify(row),
           }).then((res)=>{
-              this.books.splice(index,1,res.body);
+              this.books.splice(index,1,res.body.data);
           });
         },
         handleDelete(index,row){

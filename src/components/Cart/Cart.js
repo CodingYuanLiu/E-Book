@@ -22,11 +22,19 @@ import {mapState,mapMutations} from 'vuex';
             receive:JSON.stringify(this.multipleSelection),
             re_userid:this.userid
         }).then((res)=>{
+          /*
           if(res.bodyText == "Not enough remaining"){
             this.$message("部分书籍库存不足")
           }
           else if(res.bodyText == "Fail"){
             this.$message("库存不足，订单生成失败")
+          }*/
+          if(res.body.code == 500){
+            if(res.body.msg=="Fail")
+            this.$message("库存不足，订单生成失败");
+            else if(res.body.msg == "Not enough remaining"){
+              this.$message("部分图书库存不足")
+            }
           }
           else{
             this.$message("下单成功！")

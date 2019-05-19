@@ -38,14 +38,14 @@ export default{
                         username:String(this.form.username),
                         password:String(this.form.password),
                     }).then((res)=>{
-                        if(res.bodyText == "Wrong password" || res.bodyText == "Unexist Username"){
-                            this.$message(res.bodyText);
+                        if(res.body.code == 401){
+                            this.$message(res.body.msg);
                         }
-                        else if(res.bodyText == "BLOCKED USER"){
+                        else if(res.body.code == 403){
                             this.$message("该用户已被禁用，无法登陆系统");
                         }
                         else{
-                            let result = JSON.parse(res.bodyText);
+                            let result = JSON.parse(res.body.data);
                             this.login({
                                 username:this.form.username,
                                 authority:result.Authority,

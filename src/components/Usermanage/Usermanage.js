@@ -7,7 +7,7 @@ export default{
     created: function(){
         this.$http.post('http://localhost:8080/userinfo',{
         }).then((res)=>{
-            this.userinfo=res.body;
+            this.userinfo=res.body.data;
         })
     },
     methods:{

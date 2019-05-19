@@ -10,7 +10,7 @@ export default{
                 this.$http.post('http://localhost:8080/checkdupusername',{
                     username:String(this.form.username)
                 }).then((res)=>{
-                    is_dup = res.body;
+                    is_dup = res.body.data;
                     if(is_dup == true){
                         callback(new Error("该用户名已被占用"))
                     }

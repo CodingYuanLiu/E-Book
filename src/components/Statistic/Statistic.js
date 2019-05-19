@@ -21,13 +21,13 @@ export default {
                     salesnum.push(0);
                     for (var j = 0; j < this.Orders.length; j++) {
                         if (this.timerange[0] == '' && this.timerange[1] == '') {
-                            if (this.books[i].bnum == this.Orders[j].book.bnum) {
+                            if (this.books[i].bnum == this.Orders[j].bnum) {
                                 salesnum[i] += this.Orders[j].num;
                             }
                         }
                         else {
-                            if (this.books[i].bnum == this.Orders[j].book.bnum
-                                && this.Orders[j].order.time < this.timerange[1] && this.Orders[j].order.time > this.timerange[0]) {
+                            if (this.books[i].bnum == this.Orders[j].bnum
+                                && this.Orders[j].time < this.timerange[1] && this.Orders[j].time > this.timerange[0]) {
                                 salesnum[i] += this.Orders[j].num;
                             }
                         }
@@ -51,11 +51,11 @@ export default {
         this.$http.post('http://localhost:8080/orders', {
             userid: this.userid
         }).then((res) => {
-            this.Orders = res.body;
+            this.Orders = res.body.data;
         });
         this.$http.post('http://localhost:8080/scanning', {
         }).then((res) => {
-            this.books = res.body;
+            this.books = res.body.data;
         });
 
         //return salestatistic;
