@@ -79,7 +79,8 @@ export default {
           }
           let arr = [...this.Orders];
           for(var i = 0;i<arr.length;i++){
-            if(arr[i].time >this.timerange[0] && arr[i].time < this.timerange[1]){
+            if(arr[i].time >this.timerange[0] && arr[i].time < this.timerange[1]
+              && arr[i].name.indexOf(this.search)!=-1){
               statistic.push(arr[i]);
             }
           }
@@ -96,7 +97,7 @@ export default {
             }
           }
         }
-        return tot
+        return tot;
       }
     }
     
