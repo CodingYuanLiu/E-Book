@@ -52,3 +52,13 @@
     margin-top:7px;
     color:red
 }
+
+.text {
+    font-size: 14px;
+    height:40px;
+    line-height: 40px;
+}
+
+.item {
+    margin-bottom: 18px;
+}

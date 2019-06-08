@@ -5,7 +5,7 @@
     style="width: 100%;"
     :span-method="objectSpanMethod"
     ref="multipleTable">
-    <el-table-column label="订单号" width="150">
+    <el-table-column label="订单号" width="100">
       <template slot-scope="scope">
         <span style="margin-left: 10px">{{ scope.row.orderid }}</span>
       </template>

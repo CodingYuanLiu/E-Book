@@ -55,7 +55,7 @@
                         <div style="margin-top:-50px;" align=left>
                             <el-row>
                                 <el-col :span="6">
-                                    <el-input-number v-model="num1" 
+                                    <el-input-number v-model="num" 
                                     :min="1" 
                                     label="描述文字">
                                     </el-input-number>
@@ -71,6 +71,19 @@
             </el-container>
         </el-main>
     </el-container>
+    <el-card style="width:500px;margin-left:40px;">
+        <div slot="header" class="title" style="margin-top:0px;height:30px;line-height:30px;" align=left>
+            <span>评论</span>
+        </div>
+        <div v-if="comment==null" class = "text" align=left>
+            无
+        </div>
+        <div v-else>
+        <div v-for="o in comment" :key="o" class="text item" align=left>
+            {{'·  “' + o  + '”'}}
+        </div>
+        </div>
+    </el-card>
 </div>
 </template>
 <style scoped>
@@ -81,8 +94,9 @@
   export default {
     data() {
       return {
-        num1: 1,
-        book:null
+        num:1,
+        book:null,
+        comment:null
       };
     },
     methods: {
@@ -103,6 +117,12 @@
     },
     created() {
         this.book=this.$route.query.name;
+        this.$http.post('http://localhost:8080/comment',{
+                        bnum:this.book.bnum
+                    }).then( res =>{
+                        this.comment = res.body.data;
+                    }
+                    );
     },
     computed:{
         ...mapState({
