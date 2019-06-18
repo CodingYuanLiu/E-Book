@@ -45,7 +45,7 @@ export default {
       getSpanArr(statistic){
         let pos = 0;
         this.spanArr=[];
-        for(var i=0;i<statistic.length;i++)
+        for(var i=0;statistic!=null && i<statistic.length;i++)
         {
           if(i === 0){
             this.spanArr.push(1);
@@ -78,7 +78,7 @@ export default {
             return this.Orders;
           }
           let arr = [...this.Orders];
-          for(var i = 0;i<arr.length;i++){
+          for(var i = 0;arr!=null && i<arr.length;i++){
             if(arr[i].time >this.timerange[0] && arr[i].time < this.timerange[1]
               && arr[i].name.indexOf(this.search)!=-1){
               statistic.push(arr[i]);
@@ -91,7 +91,7 @@ export default {
       usertotal:function(){
         let tot = 0;
         if(this.Orders!=null){
-          for(var i = 0;i<this.Orders.length;i++){
+          for(var i = 0; i<this.Orders.length;i++){
             if(this.Orders[i].userid==parseInt(this.selectuser)){
               tot+=parseInt(this.Orders[i].price)*parseInt(this.Orders[i].num);
             }

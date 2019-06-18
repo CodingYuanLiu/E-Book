@@ -54,7 +54,7 @@
                     <el-card shadow="never" class=footercard>
                         <div style="margin-top:-50px;" align=left>
                             <el-row>
-                                <el-col :span="6">
+                                <el-col :span="7">
                                     <el-input-number v-model="num" 
                                     :min="1" 
                                     label="描述文字">
@@ -71,7 +71,7 @@
             </el-container>
         </el-main>
     </el-container>
-    <el-card style="width:500px;margin-left:40px;">
+    <el-card style="width:800px;margin-left:40px;" shadow="never">
         <div slot="header" class="title" style="margin-top:0px;height:30px;line-height:30px;" align=left>
             <span>评论</span>
         </div>
@@ -79,8 +79,15 @@
             无
         </div>
         <div v-else>
-        <div v-for="o in comment" :key="o" class="text item" align=left>
-            {{'·  “' + o  + '”'}}
+        <div v-for="o in comment" :key="o.comment" class="text item" align=left>
+            <el-card shadow="never">
+            <div style="font-size:160%;">
+                {{o.username+"："}}
+            </div>
+            <div style="margin-left:30px;font-size:120%">
+                {{"-- "+o.comment}}
+            </div>
+            </el-card>
         </div>
         </div>
     </el-card>
