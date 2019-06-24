@@ -73,15 +73,20 @@ export default {
       tableDatas:function(){
         if(this.Orders!=null){
           let statistic = [];
-          if(this.timerange[0] == '' || this.timerange[1] == ''){
-            this.getSpanArr(this.Orders);
-            return this.Orders;
-          }
           let arr = [...this.Orders];
-          for(var i = 0;arr!=null && i<arr.length;i++){
-            if(arr[i].time >this.timerange[0] && arr[i].time < this.timerange[1]
-              && arr[i].name.indexOf(this.search)!=-1){
-              statistic.push(arr[i]);
+          if(this.timerange[0] == '' || this.timerange[1] == ''){
+            for(var i =0;arr!=null && i<arr.length;i++){
+              if(arr[i].name.indexOf(this.search)!=-1){
+                statistic.push(arr[i]);
+              }
+            }
+          }
+          else{
+            for(var i = 0;arr!=null && i<arr.length;i++){
+              if(arr[i].time >this.timerange[0] && arr[i].time < this.timerange[1]
+                && arr[i].name.indexOf(this.search)!=-1){
+                statistic.push(arr[i]);
+              }
             }
           }
           this.getSpanArr(statistic);

@@ -117,13 +117,14 @@
               this.$router.push('login')
           }
           else{
-            this.addCart({book:this.book,count:this.num1});
+            this.addCart({book:this.book,count:this.num});
             this.$router.push(this.$route.query.redirect || '/')
           }
       }
     },
     created() {
-        this.book=this.$route.query.name;
+        //this.book=this.$route.query.name;
+        this.book = JSON.parse(decodeURIComponent(this.$route.query.name));
         this.$http.post('http://localhost:8080/comment',{
                         bnum:this.book.bnum
                     }).then( res =>{

@@ -1,7 +1,7 @@
 <template>
 <div>
   <el-table
-    :data="tableDatas.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))"
+    :data="tableDatas"
     style="width: 100%;"
     :span-method="objectSpanMethod"
     ref="multipleTable">
@@ -22,7 +22,7 @@
     </el-table-column>
     
     <el-table-column
-      width="270">
+      width="220">
       <template slot-scope="scope" > 
         <el-popover trigger="hover" placement="top">
           <p>书名: {{ scope.row.name }}</p>
@@ -37,7 +37,7 @@
 
     <el-table-column
       label="单价"
-      width="200">
+      width="110">
       <template slot-scope="scope">
         <span style="margin-left: 10px">{{ scope.row.price }}￥</span>
       </template>
@@ -48,7 +48,7 @@
         <span style="margin-left: 10px">{{ scope.row.num }}</span>
       </template>
     </el-table-column>
-    <el-table-column label="金额" width="150">
+    <el-table-column label="金额" width="110">
       <template slot-scope="scope">
         <p>{{scope.row.num*parseInt(scope.row.price)}}￥</p>
       </template>

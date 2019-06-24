@@ -1,5 +1,5 @@
 <template>
-<router-link :to="{path:'/details',query:{name:info}}" style="text-decoration: none">
+<router-link :to="{path:'/details',query:{name:encodeURIComponent(JSON.stringify(info))}}" style="text-decoration: none">
 <el-card shadow="hover" style="border-radius:20px;">
     <div class=book>
     <el-container>

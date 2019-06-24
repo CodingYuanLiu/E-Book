@@ -16,9 +16,6 @@
 ## ORM JDBC作业：
 利用JPA来操作后端数据库。
 
-## 重构进度
-2019.5.7 完成数据库的前端外键关联重构，后端对删除书籍的Cascade问题没有解决。思考：这样重构了是否改善了原有的结构？原有的结构似乎效率更高？
-
 ## Build Setup
 
 ``` bash
@@ -32,9 +29,3 @@ npm install
 npm run dev
 
 ```
-
-## Log
-* 还没有正确解决details问题。
-* scanning界面（router地址为/scanning）为课堂demo表格，做了备用（可能书籍管理会用到）。
-* 目前利用vuex保存登陆信息（刷新没）。后面可以考虑存在Session里面。
-* 图书管理缺失细节
