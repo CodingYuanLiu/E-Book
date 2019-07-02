@@ -36,7 +36,7 @@ export default {
                     data.push({
                         name: this.books[i].name,
                         author: this.books[i].author,
-                        bnum: this.books[i].bnum,
+                        isbn: this.books[i].isbn,
                         pic: this.books[i].pic,
                         totalnum: salesnum[i],
                     })

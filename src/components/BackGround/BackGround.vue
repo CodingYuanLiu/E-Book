@@ -1,6 +1,6 @@
 <template>
     <el-container>
-      <el-header height="100px" class=header>
+      <el-header height="100px" :class="isadmin? 'headeradmin':'header'">
         <el-row style="margin-top:20px">
           <el-col :span="15">
               <div>
@@ -24,13 +24,30 @@
 
 <script>
 import NavMenu from '@/components/NavMenu/Navmenu.vue'
+import {mapState} from 'vuex'
     export default{
       components:{
           'navmenu':NavMenu
       },
       data() {
         return {
-          inputsearch:""
+          inputsearch:"",
+        }
+      },
+      computed:{
+        ...mapState({
+          isLogin: state=>state.user.isLogin,
+          userinfo: state=>state.user.userinfo,
+          authority: state=>state.user.authority,
+          userid:state=>state.user.userid
+        }),
+        isadmin:function() {
+          if(this.authority && this.authority == "ADMIN"){
+            return true;
+          }
+          else{
+            return false;
+          }
         }
       },
       methods: {

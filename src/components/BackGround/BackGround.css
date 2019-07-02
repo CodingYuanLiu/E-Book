@@ -4,7 +4,14 @@
     text-align: center;
     line-height: 60px;
 }
-  
+
+.headeradmin{
+    background-color:lightseagreen;
+    color: #333;
+    text-align: center;
+    line-height: 60px;
+}
+
 .el-main {
     color: #333;
     text-align: center;

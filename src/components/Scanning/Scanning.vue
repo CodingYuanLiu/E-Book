@@ -3,7 +3,7 @@
   <div v-if="books != null">
   <el-table
     :data="books.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))"
-    style="width: 100%"
+    style="width: 100%;margin-top:-50px;"
     :default-sort = "{prop: 'date', order: 'descending'}"
     >
     <el-table-column
@@ -74,11 +74,11 @@
 
     <el-table-column
       label="单价"
-      sortable width="120">
+      sortable width="140">
       <template slot-scope="scope">
         <div v-if="isEdit[scope.$index] && authority=='ADMIN'">
-          <el-input v-model="scope.row.price">
-          </el-input>
+          <el-input-number v-model="scope.row.price" :min="1" :max="100000" size="mini">
+          </el-input-number>
         </div>
         <div v-else>￥{{scope.row.price}}</div>
       </template>
@@ -87,11 +87,15 @@
         <template slot-scope="scope">
           <div v-if="authority=='ADMIN'&&isEdit[scope.$index]">
             <el-row>
-              <el-col :span="4" style="margin-top:10px;">
-                种类：
-              </el-col>
-              <el-col :span="4">
-                <el-input v-model="scope.row.type" placeholder="种类"></el-input>
+              <el-col :span="8">
+                <el-select v-model="scope.row.type" placeholder="种类">
+                  <el-option
+                    v-for="item in options"
+                    :key="item.value"
+                    :label="item.label"
+                    :value="item.value">
+                  </el-option>
+                </el-select>
               </el-col>
               <el-col :span="4" style="margin-top:10px;">
                 简介：
@@ -118,7 +122,7 @@
         </template>
     </el-table-column>
 
-    <el-table-column>
+    <el-table-column  width="300">
       <template slot="header" slot-scope="scope">
         <el-input
           v-model="search"

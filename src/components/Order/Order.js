@@ -76,16 +76,28 @@ export default {
           let arr = [...this.Orders];
           if(this.timerange[0] == '' || this.timerange[1] == ''){
             for(var i =0;arr!=null && i<arr.length;i++){
-              if(arr[i].name.indexOf(this.search)!=-1){
-                statistic.push(arr[i]);
+              if(this.search!=null && arr[i].name.indexOf(this.search)!=-1){
+                if(this.selectuser == ''){
+                  statistic.push(arr[i]);
+                }
+                else if(parseInt(this.selectuser) == arr[i].userid){
+                  statistic.push(arr[i]);
+                }
+                //statistic.push(arr[i]);
               }
             }
           }
           else{
             for(var i = 0;arr!=null && i<arr.length;i++){
               if(arr[i].time >this.timerange[0] && arr[i].time < this.timerange[1]
-                && arr[i].name.indexOf(this.search)!=-1){
-                statistic.push(arr[i]);
+                && (this.search!=null && arr[i].name.indexOf(this.search)!=-1)){
+                  if(this.selectuser == ''){
+                    statistic.push(arr[i]);
+                  }
+                  else if(parseInt(this.selectuser) == arr[i].userid){
+                    statistic.push(arr[i]);
+                  }
+                  //statistic.push(arr[i]);
               }
             }
           }

@@ -4,7 +4,23 @@
       return {
           books:null,
           search:'',
-          isEdit:[]
+          isEdit:[],
+          options: [{
+            value: 1,
+            label: '工科类'
+          }, {
+            value: 2,
+            label: '理科类'
+          }, {
+            value: 3,
+            label: '文科类'
+          }, {
+            value: 4,
+            label: '小说类'
+          }, {
+            value: 5,
+            label: '儿童类'
+          }],
       }
     },
     created:function() {
@@ -38,6 +54,7 @@
           }).then((res)=>{
             this.isEdit.splice(index,1);
             this.books.splice(index,1);
+            this.$message("删除成功！")
           });
         },
         Addbook(){

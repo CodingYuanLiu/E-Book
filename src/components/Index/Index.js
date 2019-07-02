@@ -7,9 +7,17 @@ export default{
       },
       data(){
           return {
-              inputsearch:""
+              inputsearch:"",
+              books:null
             }
       }, 
+      created:function(){
+        this.$http.post('http://localhost:8080/scanning', {
+              }).then((res) => {
+                  this.books = res.body.data;
+                })
+          
+      },
       computed:{
           sortbooks: function(){
             if(this.books!=null){

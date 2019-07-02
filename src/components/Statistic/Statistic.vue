@@ -26,7 +26,7 @@
           <el-popover trigger="hover" placement="top">
             <p>书名: {{ scope.row.name }}</p>
             <p>作者: {{ scope.row.author }}</p>
-            <p>ISBN: {{scope.row.bnum}}</p>
+            <p>ISBN: {{scope.row.isbn}}</p>
             <div slot="reference" class="name-wrapper" >
               <el-tag>{{ scope.row.name }}</el-tag>
             </div>
